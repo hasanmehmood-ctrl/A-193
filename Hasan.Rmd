@@ -1,0 +1,42 @@
+---
+title: "PAULS GROUP"
+output: pdf_document
+date: "2025-01-05"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r cars}
+# Load required libraries
+library(tidyverse)
+library(ggplot2)
+library(e1071)  # For skewness and kurtosis
+library(cluster)
+library(corrplot)
+library(dplyr)
+library(reshape2)
+library(RColorBrewer)
+
+# Read the CSV file
+FakeNewsNet <- read_csv("9491485/FakeNewsNet.csv")
+
+# Check the column names
+colnames(FakeNewsNet)
+```
+
+```{r}
+# Histogram for tweet_num
+ggplot(FakeNewsNet, aes(x = tweet_num)) +
+  geom_histogram(bins = 30, fill = "skyblue", color = "black") +
+  labs(title = "Histogram of Tweet Number", x = "Tweet Number", y = "Frequency")
+
+# Histogram for real (binary distribution)
+ggplot(FakeNewsNet, aes(x = real)) +
+  geom_histogram(bins = 2, fill = "lightcoral", color = "black") +
+  labs(title = "Histogram of Real vs Fake", x = "Real (1) or Fake (0)", y = "Frequency")
+```
+
