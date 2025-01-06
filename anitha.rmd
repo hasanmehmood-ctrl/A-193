@@ -1,0 +1,35 @@
+---
+title: "PAULS_IV"
+output: pdf_document
+date: "2025-01-05"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Load required libraries
+library(tidyverse)
+library(ggplot2)
+library(e1071)  # For skewness and kurtosis
+library(cluster)
+library(corrplot)
+library(dplyr)
+library(reshape2)
+library(RColorBrewer)
+
+# Read the CSV file
+FakeNewsNet <- read_csv("9491485/FakeNewsNet.csv")
+
+# Check the column names
+colnames(FakeNewsNet)
+```
+
+```{r}
+# Scatterplot for tweet_num vs real
+ggplot(FakeNewsNet, aes(x = tweet_num, y = real)) +
+  geom_point(color = 'blue') +
+  labs(title = "Scatterplot: tweet_num vs real", x = "Tweet Number", y = "Real (1) or Fake (0)")
+```
+
